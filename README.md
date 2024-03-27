@@ -1,1 +1,1 @@
-COE892 project
+COE892 project - grocery store application
