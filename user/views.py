@@ -12,7 +12,7 @@ def register(request):
             form.save()
             #group = Group.objects.get(name='Customers')
             #user.groups.add(group)
-            return redirect('dashboard-index')
+            return redirect('user-login')
            # return redirect('user-login')
     else:
         form = CreateUserForm()
