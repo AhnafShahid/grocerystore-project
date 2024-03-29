@@ -129,3 +129,5 @@ STATIC_ROOT = (BASE_DIR/"asert/")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'dashboard-index'
+
+LOGIN_URL = 'user-login'
