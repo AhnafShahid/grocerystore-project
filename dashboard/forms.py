@@ -8,8 +8,8 @@ class ProductForm(forms.ModelForm):
         fields = ['name', 'category', 'quantity']
 
 
-""" class OrderForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ['name', 'order_quantity'] """
+        fields = ['product', 'order_quantity']

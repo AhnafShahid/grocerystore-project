@@ -13,50 +13,28 @@
             <table class="table bg-white">
                 <thead class="bg-info">
                     <tr class="text-white">
-                        <th scope="col">#</th>
                         <th scope="col">Product</th>
                         <th scope="col">Category</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Order by</th>
+                        <th scope="col">Date</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for orders in orders %}
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Apple</td>
-                        <td>Produce</td>
-                        <td>1</td>
+                        
+                        <td>{{orders.product}}</td>
+                        <td>{{orders.product.category}}</td>
+                        <td>{{orders.order_quantity}}</td>
                         <td>
-                            Josh Hart
+                            {{orders.staff.username}}
+                        </td>
+                        <td>
+                            {{orders.date}}
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Milk</td>
-                        <td>Dairy</td>
-                        <td>1</td>
-                        <td>
-                            Josh Hart
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Chicken</td>
-                        <td>Meat</td>
-                        <td>1 chicken please</td>
-                        <td>
-                            Josh Hart
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Potato Chips</td>
-                        <td>Snacks</td>
-                        <td>1</td>
-                        <td>
-                            Josh Hart
-                        </td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
