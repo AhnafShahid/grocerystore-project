@@ -5,10 +5,30 @@ from .models import Product, Order
 from .forms import ProductForm, OrderForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+import requests
 
 # Create your views here.
+
+def get_weather_data():
+    api_key = 'cc166ef7df4fd6e63cee327a5690c158'
+    weather_data = requests.get(
+        f"https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&appid={api_key}"
+    )
+    if weather_data.status_code == 200:
+        weather_json = weather_data.json()
+        if weather_json.get('cod') == 404:
+            return None, None
+        else:
+            weather = weather_json['weather'][0]['main']
+            temp = round(weather_json['main']['temp'])
+            return weather, temp
+    else:
+        return None, None
+
 @login_required
 def index(request):
+    weather, temp = get_weather_data()
+    
     orders = Order.objects.all()
     products = Product.objects.all()
     orders_count = orders.count()
@@ -30,6 +50,8 @@ def index(request):
         'workers_count' : workers_count,
         'orders_count' : orders_count,
         'product_count' : product_count,
+        'weather' : weather,
+        'temp' : temp,
     }
     return render(request, 'dashboard/index.html', context)
     #return HttpResponse('<h1 style="color: DodgerBlue;"> This is the Index Page </h1>')
