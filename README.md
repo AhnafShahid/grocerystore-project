@@ -1,2 +1,2 @@
 COE892 project - grocery store application
-Implement using RESTAPI and gRPC
+Implemented using RESTAPI and gRPC
